@@ -1,0 +1,78 @@
+<div class="register-container">
+    <h2>Cadastro</h2>
+
+    <form action="/registerUser" method="post">
+        <input type="text" name="name" placeholder="Digite seu nome" required>
+        <input type="email" name="email" placeholder="Digite seu email" required>
+        <input type="password" name="password" placeholder="Digite sua senha" required>
+
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <div class="footer">
+        <p>Já tem conta? <a href="/login">Fazer login</a></p>
+    </div>
+</div>
+
+    ```
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1e1e2f, #2c2c54);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .register-container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            width: 320px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #2196F3;
+            border: none;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #1976D2;
+        }
+
+        .footer {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .footer a {
+            color: #2196F3;
+            text-decoration: none;
+        }
+    </style>
+    ```
+
+</head>
+
