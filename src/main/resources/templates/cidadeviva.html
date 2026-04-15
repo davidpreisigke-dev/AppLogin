@@ -1,10 +1,122 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cidade Viva</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #11162a, #1f2a50);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 400px;
+            background: rgba(255,255,255,0.05);
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 5px;
+        }
+
+        p {
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 6px;
+            border: none;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: #f69957;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #d87f3f;
+        }
+
+        .lista {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .item {
+            background: rgba(0,0,0,0.3);
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            font-size: 13px;
+        }
+    </style>
 </head>
+
 <body>
+
+<div class="container">
+
+    <h1>Cidade Viva</h1>
+    <p>Conectando moradores para melhorar bairros e cidades</p>
+
+    <!-- FORM SIMPLES -->
+    <input type="text" id="bairro" placeholder="Seu bairro">
+    <textarea id="problema" placeholder="Descreva o problema"></textarea>
+
+    <button onclick="enviar()">Reportar Problema</button>
+
+    <!-- LISTA -->
+    <div class="lista" id="lista">
+        <div class="item">📍 Centro — Buraco na rua</div>
+        <div class="item">📍 Zona Norte — Falta de iluminação</div>
+    </div>
+
+</div>
+
+<script>
+    function enviar() {
+        const bairro = document.getElementById("bairro").value;
+        const problema = document.getElementById("problema").value;
+
+        if(bairro === "" || problema === "") {
+            alert("Preencha todos os campos!");
+            return;
+        }
+
+        const lista = document.getElementById("lista");
+
+        const novo = document.createElement("div");
+        novo.className = "item";
+        novo.innerText = "📍 " + bairro + " — " + problema;
+
+        lista.appendChild(novo);
+
+        // limpa campos
+        document.getElementById("bairro").value = "";
+        document.getElementById("problema").value = "";
+    }
+</script>
 
 </body>
 </html>

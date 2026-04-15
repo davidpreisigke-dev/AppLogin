@@ -2,6 +2,9 @@ package br.applogin.applogin.controller;
 
 import br.applogin.applogin.model.User;
 import br.applogin.applogin.repository.UserRepository;
+import br.applogin.applogin.service.CookieService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.io.UnsupportedEncodingException;
 
 @Controller
 public class LoginController {
@@ -30,22 +35,27 @@ public class LoginController {
     }
 
     @GetMapping("/")
-    public String dashboard(){
-        return "index";
+    public String dashboard(Model model, HttpServletRequest request) throws UnsupportedEncodingException {
+        model.addAttribute("nome", CookieService.getCookie(request, "userName"));
+        return "cidadeviva";
     }
 
 
 
     @PostMapping("/logar")
-    public String loginUser(User user, Model model) {
+    public String loginUser(User user, Model model, HttpServletResponse response) throws UnsupportedEncodingException {
 
         User usuarioLogado = this.ur.login(user.getEmail(), user.getPassword());
 
         if (usuarioLogado != null) {
-            return "redirect:/login";
-        }
+            CookieService.setCookie(response,"userId", String.valueOf(usuarioLogado.getId()), 10000);
+            CookieService.setCookie(response,"userName", String.valueOf(usuarioLogado.getName()), 10000);
 
-        return "redirect:/registerUser";
+            return "redirect:/";
+        }
+        model.addAttribute("erro", "Usuário Inválido");
+
+        return "index";
     }
 
     @GetMapping("/registerUser")
