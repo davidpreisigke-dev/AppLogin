@@ -1,78 +1,75 @@
-<div class="register-container">
-    <h2>Cadastro</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Conta</title>
 
-    <form action="/registerUser" method="post">
-        <input type="text" name="name" placeholder="Digite seu nome" required>
-        <input type="email" name="email" placeholder="Digite seu email" required>
-        <input type="password" name="password" placeholder="Digite sua senha" required>
-
-        <button type="submit">Cadastrar</button>
-    </form>
-
-    <div class="footer">
-        <p>Já tem conta? <a href="/login">Fazer login</a></p>
-    </div>
-</div>
-
-    ```
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #1e1e2f, #2c2c54);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-
-        .register-container {
-            background: #fff;
-            padding: 30px;
-            border-radius: 12px;
-            width: 320px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            text-align: center;
-        }
-
-        h2 {
-            margin-bottom: 20px;
-        }
-
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-        }
-
-        button {
-            width: 100%;
-            padding: 10px;
-            background: #2196F3;
-            border: none;
-            color: white;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        button:hover {
-            background: #1976D2;
-        }
-
-        .footer {
-            margin-top: 15px;
-            font-size: 14px;
-        }
-
-        .footer a {
-            color: #2196F3;
-            text-decoration: none;
-        }
-    </style>
-    ```
-
+    <!-- ✅ CORREÇÃO DO CSS -->
+    <link rel="stylesheet" href="/register.css">
 </head>
+<body>
+<main class="container">
 
+    <!-- ✅ FORM AGORA CHAMA O CONTROLLER -->
+    <form action="/registerUser" method="post">
+
+        <h2 class="nova">Criar nova conta</h2>
+
+        <!-- ✅ LINK PRO CONTROLLER -->
+        <p class="subtitulo">Ou <a href="/login">entrar na sua conta existente</a></p>
+
+        <!-- INPUTS -->
+        <div class="campo-input email">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24">
+                <path fill="#fff" d="M5 5h13a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3m0 1c-.5 0-.94.17-1.28.47l7.78 5.03l7.78-5.03C18.94 6.17 18.5 6 18 6zm6.5 6.71L3.13 7.28C3.05 7.5 3 7.75 3 8v9a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2V8c0-.25-.05-.5-.13-.72z"/>
+            </svg>
+
+            <!-- ✅ NAME -->
+            <input name="email" placeholder="E-mail" type="email">
+        </div>
+
+        <div class="campo-input-sem-icon repetir-email">
+            <input placeholder="Repetir e-mail" type="email">
+        </div>
+
+        <div class="campo-input senha">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 16 16">
+                <path fill="#fff" d="M13.35 16H2.65C1.74 16 1 15.26 1 14.35v-7.7C1 5.74 1.74 5 2.65 5h10.7c.91 0 1.65.74 1.65 1.65v7.69c0 .91-.74 1.65-1.65 1.65ZM2.65 6c-.36 0-.65.29-.65.65v7.69c0 .36.29.65.65.65h10.7c.36 0 .65-.29.65-.65V6.65c0-.36-.29-.65-.65-.65z"/>
+                <path fill="#fff" d="M12.54 6H3.46V4.54C3.46 2.04 5.5 0 8 0s4.54 2.04 4.54 4.54zM4.46 5h7.08v-.46C11.54 2.59 9.95 1 8 1S4.46 2.59 4.46 4.54z"/>
+                <circle cx="12" cy="10.5" r="1" fill="#fff"/>
+                <circle cx="8" cy="10.5" r="1" fill="#fff"/>
+                <circle cx="4" cy="10.5" r="1" fill="#fff"/>
+            </svg>
+
+            <!-- ✅ NAME -->
+            <input name="password" placeholder="Criar senha" type="password">
+        </div>
+
+        <!-- SELECT -->
+        <div class="campo-input select">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 20 20">
+                <g fill="#fff" fill-rule="evenodd" clip-rule="evenodd">
+                    <path d="M1 10h1.389v7a.5.5 0 0 0 .5.5H16.11a.5.5 0 0 0 .5-.5v-7H18a.5.5 0 0 0 .33-.875l-8.5-7.5a.5.5 0 0 0-.66 0l-8.5 7.5A.5.5 0 0 0 1 10"/>
+                    <path d="M10.708 11.5h-2.5a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h2.5a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1m-2.5 5v-4h2.5v4z"/>
+                </g>
+            </svg>
+
+            <!-- (opcional depois: name="bairro") -->
+            <select id="bairro">
+                <option value="" disabled selected>Selecione seu bairro</option>
+                <option value="centro">Centro</option>
+                <option value="zona-norte">Zona Norte</option>
+                <option value="zona-sul">Zona Sul</option>
+                <option value="zona-leste">Zona Leste</option>
+                <option value="zona-oeste">Zona Oeste</option>
+            </select>
+        </div>
+
+        <!-- BOTAO -->
+        <button type="submit">Criar Conta</button>
+
+    </form>
+</main>
+</body>
+</html>
