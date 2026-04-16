@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 
 @Component
 public class LoginInterceptor implements HandlerInterceptor {
@@ -17,6 +16,23 @@ public class LoginInterceptor implements HandlerInterceptor {
 
         System.out.println("INTERCEPTANDO...");
 
+        String uri = request.getRequestURI();
+
+// LIBERA LOGIN (corrigido)
+        if (uri.equals("/login") || uri.equals("/login/")) {
+            return true;
+        }
+
+// OUTRAS ROTAS PÚBLICAS
+        if (uri.startsWith("/registerUser") || uri.startsWith("/logar") || uri.startsWith("/error")) {
+            return true;
+        }
+
+// ARQUIVOS ESTÁTICOS
+        if (uri.contains(".css") || uri.contains(".js") || uri.contains(".png") || uri.contains(".jpg")) {
+            return true;
+        }
+
         if (CookieService.getCookie(request, "userId") != null) {
             return true;
         }
@@ -24,5 +40,4 @@ public class LoginInterceptor implements HandlerInterceptor {
         response.sendRedirect("/login");
         return false;
     }
-
 }

@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100..900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    background: url("/img/primeiraopcaobackground.png") no-repeat center/cover;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 0 300px rgba(0, 0, 0, 0.8);
+}
+
+.container {
+    width: 530px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    padding: 30px 50px;
+    color: white;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(3px);
+}
+
+.nova {
+    color: #11162a;
+    font-weight: bold;
+    text-align: center;
+    font-size: 37px;
+    padding: 20px 0 10px;
+    font-family: "Roboto", sans-serif;
+}
+
+.subtitulo {
+    text-align: center;
+    font-weight: 200;
+    font-size: 17px;
+    padding-bottom: 30px;
+}
+
+.subtitulo a {
+    text-decoration: none;
+    color: #f69957;
+}
+
+.subtitulo a:hover {
+    color: #b97e54;
+}
+
+.campo-input,
+.campo-input-sem-icon {
+    width: 100%;
+    height: 50px;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+}
+
+.campo-input input,
+.campo-input-sem-icon input {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid white;
+    background: transparent;
+    outline: none;
+    color: white;
+    font-size: 15px;
+    padding: 10px;
+    font-weight: 300;
+}
+
+.campo-input input:focus,
+.campo-input-sem-icon input:focus {
+    border-bottom: 2px solid #11162a;
+    transition: 0.3s ease;
+}
+
+svg {
+    margin-right: 15px;
+    background-color: #11162a93;
+    border-radius: 6px;
+    padding: 4px;
+}
+
+::placeholder {
+    color: white;
+    font-weight: 200;
+    font-size: 15px;
+}
+
+input:focus::placeholder {
+    color: transparent;
+}
+
+input:hover::placeholder {
+    color: #090c18;
+    font-weight: 400;
+}
+
+.esqueceu {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 40px;
+}
+
+.esqueceu a {
+    color: white;
+    font-weight: 200;
+    text-decoration: none;
+}
+
+.esqueceu a:hover {
+    text-decoration: underline;
+}
+
+button {
+    width: 100%;
+    height: 60px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+    font-size: 18px;
+}
+
+button:hover {
+    background-color: #11162a;
+    color: white;
+    transition: 0.4s ease;
+}
+
+label {
+    display: flex;
+    justify-content: center;
+}
+
+.checkbox {
+    margin: 30px 0 50px;
+    font-weight: 300;
+    cursor: pointer;
+}
+
+.checkbox input {
+    margin-right: 10px;
+    width: 17px;
+    accent-color: black;
+}
+
+select {
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius: 7px;
+    padding: 10px;
+    background-color: #11162abe;
+    color: white;
+    cursor: pointer;
+    backdrop-filter: blur(1px);
+    transition: 0.3s;
+}
+
+select:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.select {
+    margin-bottom: 40px;
+}

@@ -29,13 +29,15 @@ public class LoginController {
     }
 
 
-    @GetMapping("/login")
-    public String login() {
-        return "index";
-    }
-
     @GetMapping("/")
     public String dashboard(Model model, HttpServletRequest request) throws UnsupportedEncodingException {
+
+        String userId = CookieService.getCookie(request, "userId");
+
+        if (userId == null) {
+            return "redirect:/login";
+        }
+
         model.addAttribute("nome", CookieService.getCookie(request, "userName"));
         return "cidadeviva";
     }
@@ -79,6 +81,11 @@ public class LoginController {
 
         ur.save(user);
         return "redirect:/login";
+    }
+
+    @GetMapping({"/login", "/login/"})
+    public String login() {
+        return "index";
     }
 
 }
